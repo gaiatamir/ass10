@@ -81,7 +81,7 @@ def insert():
         id = request.form['id']
         query = "INSERT INTO users(ID,fname,lname) VALUES ('%s','%s','%s')" % (id, Fname, lastName)
         interact_db(query, 'commit')
-        flash('The user inserted')
+        flash('New User Signed just Now')
     return redirect('assignment10')
 
 
