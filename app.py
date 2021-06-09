@@ -28,38 +28,7 @@ def interact_db(query, query_type: str):
     cursor.close()
     return return_value
 
-@app.route('/assignment11/users')
-def jasonUser():
-    query= "select * from users"
-    query_result = interact_db(query=query,query_type='fetch')
-    if (len(query_result)==0):
-        return jsonify({
-            'success':'false',
-            'elart':'no existing users'
-        })
-    else:
-        return jsonify({
-            'success': 'true',
-            'data':query_result
-        })
 
-
-
-@app.route('/assignment11/users/selected',defaults={'userID':203215546})
-@app.route('/assignment11/users/selected/<int:userID>')
-def jasonUserById(userID):
-    query= "select * from users where ID = '%s'" % userID
-    query_result = interact_db(query=query,query_type='fetch')
-    if (len(query_result)==0):
-        return jsonify({
-            'success':'false',
-            'elart':'user is not exist'
-        })
-    else:
-        return jsonify({
-            'success': 'true',
-            'data':{"id":query_result.name}
-        })
 
 @app.route('/')
 
